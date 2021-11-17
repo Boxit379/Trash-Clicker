@@ -13,6 +13,7 @@ if (savegame != null) {
 }
 
 $("#upgradesTab").hide();
+$("#shopTab").hide();
 hideCheck();
 
 function removeTrash(){
@@ -23,7 +24,7 @@ function removeTrash(){
 
 function upgradeGloves(){
   if (trashRemoved >= glovesCost) {
-    timerMax -= 50;
+    timerMax -= 100;
     trashRemoved -= glovesCost;
     glovesCost *= glovesCost;
     document.getElementById("glovesCost").innerHTML = glovesCost;
@@ -43,6 +44,9 @@ function saveGame() {
 function hideCheck() {
   if (totalTrashRemoved >= 3) {
     $("#upgradesTab").show();
+  }
+  if (totalTrashRemoved >= 8) {
+    $("#shopTab").show();
   }
 }
 
