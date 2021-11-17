@@ -44,6 +44,7 @@ window.setInterval(function(){
     totalTrashRemoved += 1;
   }
   document.getElementById("trashCounter").innerHTML = trashRemoved;
+  //document.getElementById("totalTrashCounter").innerHTML = totalTrashRemoved;
   document.getElementById("trashProgress").value = trashTimer;
   hideCheck();
 }, 10);
