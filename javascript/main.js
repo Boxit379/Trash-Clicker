@@ -2,12 +2,14 @@ var trashRemoved = 0;
 var totalTrashRemoved = 0;
 var trashTimer = -1;
 var timerMax = 500;
+var glovesCost = 5;
 
 var savegame = JSON.parse(localStorage.getItem("save"));
 if (savegame != null) {
   if (typeof savegame.trashRemoved !== "undefined") trashRemoved = savegame.trashRemoved;
   if (typeof savegame.totalTrashRemoved !== "undefined") totalTrashRemoved = savegame.totalTrashRemoved;
   if (typeof savegame.timerMax !== "undefined") timerMax = savegame.timerMax;
+  if (typeof savegame.glovesCost !== "undefined") timerMax = savegame.glovesCost;
 }
 
 $("#upgradesTab").hide();
@@ -19,11 +21,21 @@ function removeTrash(){
   }
 }
 
+function upgradeGloves(){
+  if (trashRemoved >= glovesCost) {
+    timerMax -= 50;
+    trashRemoved -= glovesCost;
+    glovesCost *= glovesCost;
+    document.getElementById("glovesCost").innerHTML = glovesCost;
+  }
+}
+
 function saveGame() {
   var save = {
     trashRemoved: trashRemoved,
     totalTrashRemoved: totalTrashRemoved,
-    timerMax: timerMax
+    timerMax: timerMax,
+    glovesCost: glovesCost
   }
   localStorage.setItem("save",JSON.stringify(save));
 }
@@ -46,5 +58,6 @@ window.setInterval(function(){
   document.getElementById("trashCounter").innerHTML = trashRemoved;
   //document.getElementById("totalTrashCounter").innerHTML = totalTrashRemoved;
   document.getElementById("trashProgress").value = trashTimer;
+  document.getElementById("trashProgress").max = timerMax;
   hideCheck();
 }, 10);
