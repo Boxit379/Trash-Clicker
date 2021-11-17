@@ -2,14 +2,19 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <title>Seajam Game</title>
   </head>
   <body>
     <h1>You have removed <span id="trashCounter">0</span> pounds of trash from the ocean</h1>
-    <button onclick="removeTrash(1)">Remove Trash</button>
+    <button onclick="removeTrash()">Remove Trash</button>
+    <button onclick="saveGame()">Save</button>
     <progress value="0" max="500" id="trashProgress">0%</progress>
-    <h2>Upgrades</h2>
+    <div id="upgradesTab">
+      <h2>Upgrades</h2>
+      <button onclick="upgradeGloves()">Gloves<br>5 lbs. of trash</button>
+    </div>
     <script type="text/javascript" src="javascript/main.js"></script>
   </body>
 </html>
