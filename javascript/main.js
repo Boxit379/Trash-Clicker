@@ -63,5 +63,6 @@ window.setInterval(function(){
   //document.getElementById("totalTrashCounter").innerHTML = totalTrashRemoved;
   document.getElementById("trashProgress").value = trashTimer;
   document.getElementById("trashProgress").max = timerMax;
+  document.getElementById("glovesCost").innerHTML = glovesCost;
   hideCheck();
 }, 10);

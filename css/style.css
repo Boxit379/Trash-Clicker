@@ -1,4 +1,26 @@
-@import "node_modules/nord/src/nord.css";
+@import "nord.css";
 body {
   font-family: sans-serif;
+  background-color: var(--nord0);
+  color: var(--nord6);
+  text-align: center;
+}
+
+button, button:active {
+  background-color: var(--nord4);
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  background-color: var(--nord5);
+}
+
+progress {
+  background-color: var(--nord9);
+  color: var(--nord10);
+  border-radius: 5px;
+  height: 10px;
+  margin: 3px;
 }
