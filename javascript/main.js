@@ -8,10 +8,8 @@ var savegame = JSON.parse(localStorage.getItem("save"));
 if (savegame != null) {
   if (typeof savegame.trashRemoved !== "undefined") trashRemoved = savegame.trashRemoved;
   if (typeof savegame.totalTrashRemoved !== "undefined") totalTrashRemoved = savegame.totalTrashRemoved;
-  console.log(timerMax, "|", glovesCost);
   if (typeof savegame.timerMax !== "undefined") timerMax = savegame.timerMax;
-  if (typeof savegame.glovesCost !== "undefined") timerMax = savegame.glovesCost;
-  console.log(timerMax, "|", glovesCost);
+  if (typeof savegame.glovesCost !== "undefined") glovesCost = savegame.glovesCost;
 }
 
 $("#upgradesTab").hide();
