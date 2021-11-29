@@ -16,6 +16,9 @@ if (savegame != null) {
 
 $("#upgradesTab").hide();
 $("#shopTab").hide();
+$( "#dialogBox" ).dialog({
+   autoOpen: false,
+});
 showCheck();
 
 function removeTrash(){
@@ -33,13 +36,16 @@ function upgradeGloves(){
 }
 
 function buyWorker(){
-  var workerCost = Math.floor(8 * Math.pow(1.1,workers));
+  var workerCost = Math.floor(8 * Math.pow(1.2,workers));
   if (trashRemoved >= workerCost) {
     workers += 1;
     trashRemoved -= workerCost;
   }
-  var nextCost = Math.floor(10 * Math.pow(1.1,workers))
+  var nextCost = Math.floor(10 * Math.pow(1.2,workers))
   document.getElementById('workerCost').innerHTML = nextCost;
+  if (workers == 1) {
+    $( "#dialogBox" ).dialog("open");
+  }
 }
 
 function saveGame() {
