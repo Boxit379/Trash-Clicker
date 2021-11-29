@@ -10,15 +10,15 @@
     <h1>You have <span id="trashCounter">0</span> pounds of trash.</h1>
     <!--<h4>You have removed <span id="totalTrashCounter">0</span> pounds in total.</h4>-->
     <button onclick="removeTrash()">Remove Trash</button>
-    <button onclick="saveGame()">Save</button>
+    <button onclick="saveGame()" id="saveButton">Save</button>
     <progress value="0" max="500" id="trashProgress">0%</progress>
     <div id="upgradesTab">
       <h2>Upgrades</h2>
-      <button onclick="upgradeGloves()">Gloves<br><span id="glovesCost">5</span> lbs. of trash</button>
+      <button onclick="upgradeGloves()">Gloves<br><span id="glovesCost">5</span></button>
     </div>
     <div id="shopTab">
       <h2>Shop</h2>
-      <button onclick="buyWorker()">Worker<br><span id="workerCost">5</span> lbs. of trash</button>
+      <button onclick="buyWorker()">Worker<br><span id="workerCost">8</span> lbs. of trash</button>
     </div>
     <script type="text/javascript" src="javascript/main.js"></script>
   </body>

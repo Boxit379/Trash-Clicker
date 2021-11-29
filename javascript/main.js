@@ -11,7 +11,7 @@ if (savegame != null) {
   if (typeof savegame.totalTrashRemoved !== "undefined") totalTrashRemoved = savegame.totalTrashRemoved;
   if (typeof savegame.timerMax !== "undefined") timerMax = savegame.timerMax;
   if (typeof savegame.glovesCost !== "undefined") glovesCost = savegame.glovesCost;
-  if (typeof savegame.workers !== "undefined" workers = savegame.workers);
+  if (typeof savegame.workers !== "undefined") workers = savegame.workers;
 }
 
 $("#upgradesTab").hide();
@@ -25,21 +25,21 @@ function removeTrash(){
 }
 
 function upgradeGloves(){
-  if (trashRemoved >= glovesCost) {
+  if (trashRemoved >= glovesCost && timerMax > 100) {
     timerMax -= 100;
     trashRemoved -= glovesCost;
     glovesCost *= glovesCost;
-    document.getElementById("glovesCost").innerHTML = glovesCost;
   }
 }
 
 function buyWorker(){
+  var workerCost = Math.floor(8 * Math.pow(1.1,workers));
   if (trashRemoved >= workerCost) {
     workers += 1;
     trashRemoved -= workerCost;
-    workerCost *= 1.2
-    document.getElementById("glovesCost").innerHTML = glovesCost;
   }
+  var nextCost = Math.floor(10 * Math.pow(1.1,workers))
+  document.getElementById('workerCost').innerHTML = nextCost;
 }
 
 function saveGame() {
@@ -62,6 +62,10 @@ function showCheck() {
   }
 }
 
+function resetGame() {
+  localStorage.removeItem("save");
+}
+
 window.setInterval(function(){
   if (trashTimer < timerMax && trashTimer >= 0) {
     trashTimer += 1;
@@ -71,10 +75,16 @@ window.setInterval(function(){
     trashRemoved += 1;
     totalTrashRemoved += 1;
   }
-  document.getElementById("trashCounter").innerHTML = trashRemoved;
+  var totalIncrease = workers / timerMax;
+  trashRemoved += totalIncrease;
+  document.getElementById("trashCounter").innerHTML = trashRemoved.toFixed(2);
   //document.getElementById("totalTrashCounter").innerHTML = totalTrashRemoved;
   document.getElementById("trashProgress").value = trashTimer;
   document.getElementById("trashProgress").max = timerMax;
-  document.getElementById("glovesCost").innerHTML = glovesCost;
+  if (timerMax > 100) {
+    document.getElementById("glovesCost").innerHTML = glovesCost + "lbs. of trash";
+  } else {
+    document.getElementById("glovesCost").innerHTML = "Max Level";
+  }
   showCheck();
 }, 10);
